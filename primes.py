@@ -1,22 +1,27 @@
 """List of prime numbers generator."""
 """ENTER YOUR SOLUTION HERE!"""
 
+def isNumPrime(number):
+    if number == 2:
+        return True
+    else:
+        for num in range(2, number):
+            if (number % num) == 0:
+                return False
+        else:
+            return True
+
 def primes(number_of_primes):
     list = []
-    for num in range(1, number_of_primes + 1):
-        if num > 1:
-            for i in range(2,num):
-                if (num % i) == 0:
-                    break
-            else:
-                list.append(num)
-        elif number_of_primes == 1:
-            list.append(2)
-            break
-        elif number_of_primes == 2:
-            list.append(2)
-            list.append(3)
-            break
+    count = 1
+    numberToCheck = 2
+    while count < number_of_primes + 1:
+        if isNumPrime(numberToCheck):
+            list.append(numberToCheck)
+            count += 1
+            numberToCheck += 1
+        else:
+            numberToCheck += 1
     print(f"{list}")
     return list
 
